@@ -12,7 +12,7 @@ var SCENE_W = 300;
 var SCENE_H = 10000;
 var CANVAS_W = 303;
 var CANVAS_H = 503
-var NAV_SPEED = 0.9
+var NAV_SPEED = 5
 let fullScreen = true;
 let canvas;
 
@@ -29,7 +29,7 @@ function preload() {
     outsideFrame.addAnimation('assets/frame.png');
     outsideFrame.visible = false;
 
-    var soundLine = new Soundline(1500, "assets/Marker1.mp3");
+    var soundLine = new Soundline(1900, "assets/Marker1.mp3");
     soundLines.push(soundLine);
 
     var soundLine = new Soundline(3000, "assets/Marker3.mp3");
@@ -41,7 +41,7 @@ function preload() {
     var soundZone = new SoundZone(500, 1500, "assets/Marker3.mp3");
     soundZones.push(soundZone);
 
-    player = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 20, 20, 'default');
+    player = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 20, 20, 'none');
     player.addAnimation('assets/player.png');
     player.rotation = 0;
 
@@ -71,10 +71,12 @@ function draw() {
         loadingSprite.visible = false;
         background(20);
         camera.on();
-        player.moveTo(mouse, NAV_SPEED);
+
+        var distance = createVector(player.position.x, player.position.y).sub(createVector(mouseX, mouseY))
+        player.moveTo(mouse, NAV_SPEED * distance.mag() / CANVAS_H);
 
         camera.x = player.x;
-        camera.y = player.y ;
+        camera.y = player.y;
 
         if (player.position.x < 0)
             player.position.x = 0;
