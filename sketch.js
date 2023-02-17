@@ -83,7 +83,6 @@ function loadAssets() {
     var playerX = playerXML.getNum('startX');
     var playerY = playerXML.getNum('startY')
     player = new Sprite(playerX, playerY, 20, 20, 'none');
-    console.log("player X = " +playerX+"="+playerY)
     player.addAnimation('assets/player.png');
     player.rotation = 0;
 
