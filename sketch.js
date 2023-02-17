@@ -74,7 +74,7 @@ function draw() {
         player.moveTo(mouse, NAV_SPEED);
 
         camera.x = player.x;
-        camera.y = player.y + canvas.height / 3;
+        camera.y = player.y ;
 
         if (player.position.x < 0)
             player.position.x = 0;
