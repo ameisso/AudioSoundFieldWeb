@@ -19,10 +19,15 @@ let canvas;
 
 function preload() {
     soundFormats('mp3', 'ogg');
-    if (fullScreen == true) {
+
+    if (fullScreen) {
         CANVAS_W = windowWidth;
         CANVAS_H = windowHeight;
+
     }
+    outsideFrame = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 'static');
+    outsideFrame.addAnimation('assets/frame.png');
+    outsideFrame.visible = false;
 
     var soundLine = new Soundline(1500, "assets/Marker1.mp3");
     soundLines.push(soundLine);
@@ -35,9 +40,6 @@ function preload() {
 
     var soundZone = new SoundZone(500, 1500, "assets/Marker3.mp3");
     soundZones.push(soundZone);
-
-    outsideFrame = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 'static');
-    outsideFrame.addAnimation('assets/frame.png');
 
     player = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 20, 20, 'default');
     player.addAnimation('assets/player.png');
@@ -54,6 +56,7 @@ function preload() {
     loadingSprite.text = 'click to start'
     loadingSprite.color = 'grey';
     loadingSprite.visible = true;
+    loadingSprite.textSize = CANVAS_W / 30;
 }
 function setup() {
 
@@ -72,7 +75,6 @@ function draw() {
 
         camera.x = player.x;
         camera.y = player.y + canvas.height / 3;
-
 
         if (player.position.x < 0)
             player.position.x = 0;
