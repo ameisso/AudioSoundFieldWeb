@@ -158,3 +158,10 @@ function mouseReleased() {
     camera.zoom = 1;
     NAV_SPEED /= 10;
 }
+
+function keyPressed() {
+    if (key == 'd') {
+        debug = !debug
+    }
+    return false; // prevent any default behaviour
+}
