@@ -28,6 +28,20 @@ SoundPoint.prototype.display = function () {
 
 
 SoundPoint.prototype.update = function () {
+
+    // LOAD IF NEEDED 
+    if (this.distanceFromPlayer() < preloadDistance) {
+        if (!this.audio) {
+            this.audio = loadSound(this.path);
+        }
+        if (!this.image) {
+            if (this.imagePath) {
+                this.image = loadImage(this.imagePath)
+            }
+        }
+    }
+
+    // PLAY if NEEDED
     if (this.audio) {
         if (!this.audio.isPlaying() && this.distanceFromPlayer() < this.r) {
             this.audio.play();
@@ -43,18 +57,6 @@ SoundPoint.prototype.update = function () {
     }
 }
 
-SoundPoint.prototype.loadIfNeeded = function () {
-    if (this.distanceFromPlayer() < preloadDistance) {
-        if (!this.audio) {
-            this.audio = loadSound(this.path);
-        }
-        if (!this.image) {
-            if (this.imagePath) {
-                this.image = loadImage(this.imagePath)
-            }
-        }
-    }
-}
 
 SoundPoint.prototype.distanceFromPlayer = function () {
     return dist(player.position.x, player.position.y, this.x, this.y);

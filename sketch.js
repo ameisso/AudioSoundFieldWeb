@@ -131,7 +131,6 @@ function draw() {
         }
 
         for (soundPoint of soundPoints) {
-            soundPoint.loadIfNeeded();
             soundPoint.display();
             soundPoint.update();
         }
