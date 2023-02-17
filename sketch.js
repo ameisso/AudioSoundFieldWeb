@@ -27,7 +27,8 @@ function preload() {
 function loadAssets() {
 
     let sceneXML = xml.getChild('scene');
-
+    let playerXML = xml.getChild('player')
+    NAV_SPEED = playerXML.getNum('speed')
     if (sceneXML.getNum('fullscreen')) {
         CANVAS_W = windowWidth;
         CANVAS_H = windowHeight;
@@ -54,7 +55,15 @@ function loadAssets() {
         let posY = soundPointsXML[i].getNum('y');
         let radius = soundPointsXML[i].getNum('r');
         let filePath = "assets/" + soundPointsXML[i].getString('fileName');
-        var soundPoint = new SoundPoint(posX, posY, radius, filePath);
+        var soundPoint
+        if (soundPointsXML[i].getString('associatedImage')) {
+            soundPoint = new SoundPoint(posX, posY, radius, filePath, "assets/" + soundPointsXML[i].getString('associatedImage'));
+        }
+        else {
+            soundPoint = new SoundPoint(posX, posY, radius, filePath);
+        }
+
+
         soundPoints.push(soundPoint);
     }
 

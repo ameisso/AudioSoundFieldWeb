@@ -1,10 +1,14 @@
-function SoundPoint(x, y, r, path) {
+function SoundPoint(x, y, r, path, imagePath) {
     this.x = x
     this.y = y;
     this.r = r;
     this.path = path;
+    this.imagePath = imagePath;
     this.volume = 0;
     this.audio = loadSound(this.path);
+    if (this.imagePath) {
+        this.image = loadImage(this.imagePath)
+    }
 }
 
 
@@ -18,6 +22,10 @@ SoundPoint.prototype.display = function () {
         fill(200);
         text(this.path, this.x + 10, this.y - 10);
         text(this.volume.toFixed(1), this.x + 10, this.y - 20);
+    }
+    else if(this.imagePath)
+    {
+        image(this.image, this.x-this.image.width/2, this.y-this.image.height/2);
     }
 }
 
