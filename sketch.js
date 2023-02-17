@@ -1,6 +1,7 @@
 var player;
 var bg;
 var outsideFrame;
+var xml;
 
 var soundLines = [];
 var soundPoints = [];
@@ -8,38 +9,63 @@ var soundZones = [];
 var loadingSprite;
 var hadFirstClick = false;
 //the scene is twice the size of the canvas
-var SCENE_W = 300;
+var SCENE_W = 3000;
 var SCENE_H = 10000;
 var CANVAS_W = 303;
 var CANVAS_H = 503
-var NAV_SPEED = 5
+var NAV_SPEED = 3
 let fullScreen = true;
+let debug = false;
 let canvas;
 
 
 function preload() {
     soundFormats('mp3', 'ogg');
+    xml = loadXML('assets/project.xml', loadAssets);
+}
 
-    if (fullScreen) {
+function loadAssets() {
+
+    let sceneXML = xml.getChild('scene');
+
+    if (sceneXML.getNum('fullscreen')) {
         CANVAS_W = windowWidth;
         CANVAS_H = windowHeight;
-
     }
+
+    SCENE_W = sceneXML.getNum('width')
+    SCENE_H = sceneXML.getNum('height')
+
     outsideFrame = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 'static');
     outsideFrame.addAnimation('assets/frame.png');
     outsideFrame.visible = false;
 
-    var soundLine = new Soundline(1900, "assets/Marker1.mp3");
-    soundLines.push(soundLine);
+    let soundLineXML = xml.getChildren('soundLine');
+    for (let i = 0; i < soundLineXML.length; i++) {
+        let posY = soundLineXML[i].getNum('y');
+        let filePath = "assets/" + soundLineXML[i].getString('fileName');
+        var soundLine = new Soundline(posY, filePath);
+        soundLines.push(soundLine);
+    }
 
-    var soundLine = new Soundline(3000, "assets/Marker3.mp3");
-    soundLines.push(soundLine);
+    let soundPointsXML = xml.getChildren('soundPoint');
+    for (let i = 0; i < soundPointsXML.length; i++) {
+        let posX = soundPointsXML[i].getNum('x');
+        let posY = soundPointsXML[i].getNum('y');
+        let radius = soundPointsXML[i].getNum('r');
+        let filePath = "assets/" + soundPointsXML[i].getString('fileName');
+        var soundPoint = new SoundPoint(posX, posY, radius, filePath);
+        soundPoints.push(soundPoint);
+    }
 
-    var soundPoint = new SoundPoint(300, 200, 100, "assets/Marker3.mp3");
-    soundPoints.push(soundPoint);
-
-    var soundZone = new SoundZone(500, 1500, "assets/Marker3.mp3");
-    soundZones.push(soundZone);
+    let soundZoneXML = xml.getChildren('soundZone');
+    for (let i = 0; i < soundZoneXML.length; i++) {
+        let startY = soundZoneXML[i].getNum('startY');
+        let endY = soundZoneXML[i].getNum('endY');
+        let filePath = "assets/" + soundZoneXML[i].getString('fileName');
+        var soundZone = new SoundZone(startY, endY, filePath);
+        soundZones.push(soundZone);
+    }
 
     player = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 20, 20, 'none');
     player.addAnimation('assets/player.png');
@@ -121,7 +147,6 @@ function touchStarted() {
     getAudioContext().resume()
     hadFirstClick = true;
 }
-
 
 function mousePressed() {
     hadFirstClick = true;

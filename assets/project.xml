@@ -1,0 +1,14 @@
+<project>
+	<scene width="300" height="10000" fullscreen="1">
+	</scene>
+	<soundPoint x="100" y="500" r="300" fileName="Marker1.mp3">
+	</soundPoint>
+	<soundPoint x="300" y="1100" r="300" fileName="Marker3.mp3">
+	</soundPoint>
+	<soundZone startY="3000" endY="4000" fileName="Marker3.mp3">
+	</soundZone>
+	<soundZone startY="8000" endY="9000" fileName="Marker3.mp3">
+	</soundZone>
+	<soundLine y="300" fileName="Marker3.mp3">
+	</soundLine>
+</project>

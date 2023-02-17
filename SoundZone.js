@@ -8,16 +8,18 @@ function SoundZone(h1, h2, path) {
 }
 
 SoundZone.prototype.display = function () {
-    stroke(255);
-    line(-width, this.h1, SCENE_W + width, this.h1);
-    line(-width, this.h1 + this.fadeZone, SCENE_W + width, this.h1 + this.fadeZone);
-    line(-width, this.h2, SCENE_W + width, this.h2);
-    line(-width, this.h2 - this.fadeZone, SCENE_W + width, this.h2 - this.fadeZone);
-    fill(255, 40);
-    rect(-width, this.h1, SCENE_W + 2 * width, this.h2 - this.h1);
-    noStroke();
-    fill(200);
-    text(this.path, player.position.x - textWidth(this.path) / 2, this.height - 12);
+    if (debug) {
+        stroke(255);
+        line(-width, this.h1, SCENE_W + width, this.h1);
+        line(-width, this.h1 + this.fadeZone, SCENE_W + width, this.h1 + this.fadeZone);
+        line(-width, this.h2, SCENE_W + width, this.h2);
+        line(-width, this.h2 - this.fadeZone, SCENE_W + width, this.h2 - this.fadeZone);
+        fill(255, 40);
+        rect(-width, this.h1, SCENE_W + 2 * width, this.h2 - this.h1);
+        noStroke();
+        fill(200);
+        text(this.path, player.position.x - textWidth(this.path) / 2, this.height - 12);
+    }
 }
 
 SoundZone.prototype.update = function () {

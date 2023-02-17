@@ -9,14 +9,16 @@ function SoundPoint(x, y, r, path) {
 
 
 SoundPoint.prototype.display = function () {
-    stroke(255);
-    circle(this.x, this.y, 5);
-    noFill();
-    circle(this.x, this.y, this.r * 2);
-    noStroke();
-    fill(200);
-    text(this.path, this.x + 10, this.y - 10);
-    text(this.volume.toFixed(1), this.x + 10, this.y - 20);
+    if (debug) {
+        stroke(255);
+        circle(this.x, this.y, 5);
+        noFill();
+        circle(this.x, this.y, this.r * 2);
+        noStroke();
+        fill(200);
+        text(this.path, this.x + 10, this.y - 10);
+        text(this.volume.toFixed(1), this.x + 10, this.y - 20);
+    }
 }
 
 
@@ -25,7 +27,7 @@ SoundPoint.prototype.update = function () {
         this.audio.play();
     }
     else {
-        this.volume = Math.min(Math.max(0, 0.2 * Math.log(this.r / this.distanceFromPlayer())),0.9);
+        this.volume = Math.min(Math.max(0, 0.2 * Math.log(this.r / this.distanceFromPlayer())), 0.9);
         this.audio.setVolume(this.volume);
     }
 
