@@ -38,6 +38,9 @@ function loadAssets() {
 
     SCENE_W = sceneXML.getNum('width')
     SCENE_H = sceneXML.getNum('height')
+    if (sceneXML.getNum('debug') == 1) {
+        debug = true;
+    }
 
     outsideFrame = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 'static');
     outsideFrame.addAnimation('assets/frame.png');
@@ -92,7 +95,7 @@ function loadAssets() {
     }
 
     loadingSprite = new Sprite(CANVAS_W / 2, CANVAS_H / 2, CANVAS_W * 1.2, CANVAS_H, 'none')
-    loadingSprite.text = 'click to start'
+    loadingSprite.text = 'click to start V0.1'
     loadingSprite.color = 'grey';
     loadingSprite.visible = true;
     loadingSprite.textSize = CANVAS_W / 30;
