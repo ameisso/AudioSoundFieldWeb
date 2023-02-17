@@ -5,10 +5,6 @@ function SoundPoint(x, y, r, path, imagePath) {
     this.path = path;
     this.imagePath = imagePath;
     this.volume = 0;
-    this.audio = loadSound(this.path);
-    if (this.imagePath) {
-        this.image = loadImage(this.imagePath)
-    }
 }
 
 
@@ -23,27 +19,42 @@ SoundPoint.prototype.display = function () {
         text(this.path, this.x + 10, this.y - 10);
         text(this.volume.toFixed(1), this.x + 10, this.y - 20);
     }
-    else if(this.imagePath)
-    {
-        image(this.image, this.x-this.image.width/2, this.y-this.image.height/2);
+    else if (this.imagePath) {
+        if (this.image) {
+            image(this.image, this.x - this.image.width / 2, this.y - this.image.height / 2);
+        }
     }
 }
 
 
 SoundPoint.prototype.update = function () {
-    if (!this.audio.isPlaying() && this.distanceFromPlayer() < this.r) {
-        this.audio.play();
-    }
-    else {
-        this.volume = Math.min(Math.max(0, 0.2 * Math.log(this.r / this.distanceFromPlayer())), 0.9);
-        this.audio.setVolume(this.volume);
-    }
+    if (this.audio) {
+        if (!this.audio.isPlaying() && this.distanceFromPlayer() < this.r) {
+            this.audio.play();
+        }
+        else {
+            this.volume = Math.min(Math.max(0, 0.2 * Math.log(this.r / this.distanceFromPlayer())), 0.9);
+            this.audio.setVolume(this.volume);
+        }
 
-    if (this.audio.isPlaying() && this.distanceFromPlayer() > this.r) {
-        this.audio.stop();
+        if (this.audio.isPlaying() && this.distanceFromPlayer() > this.r) {
+            this.audio.stop();
+        }
     }
 }
 
+SoundPoint.prototype.loadIfNeeded = function () {
+    if (this.distanceFromPlayer() < preloadDistance) {
+        if (!this.audio) {
+            this.audio = loadSound(this.path);
+        }
+        if (!this.image) {
+            if (this.imagePath) {
+                this.image = loadImage(this.imagePath)
+            }
+        }
+    }
+}
 
 SoundPoint.prototype.distanceFromPlayer = function () {
     return dist(player.position.x, player.position.y, this.x, this.y);

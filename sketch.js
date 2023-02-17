@@ -14,6 +14,7 @@ var SCENE_H = 10000;
 var CANVAS_W = 303;
 var CANVAS_H = 503
 var NAV_SPEED = 3
+var preloadDistance = SCENE_H;
 let fullScreen = true;
 let debug = false;
 let canvas;
@@ -29,6 +30,7 @@ function loadAssets() {
     let sceneXML = xml.getChild('scene');
     let playerXML = xml.getChild('player')
     NAV_SPEED = playerXML.getNum('speed')
+    preloadDistance = playerXML.getNum('preloadDistance')
     if (sceneXML.getNum('fullscreen')) {
         CANVAS_W = windowWidth;
         CANVAS_H = windowHeight;
@@ -129,6 +131,7 @@ function draw() {
         }
 
         for (soundPoint of soundPoints) {
+            soundPoint.loadIfNeeded();
             soundPoint.display();
             soundPoint.update();
         }
