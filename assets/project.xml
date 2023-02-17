@@ -1,7 +1,7 @@
 <project>
 	<scene width="300" height="10000" fullscreen="1">
 	</scene>
-	<player speed="2" preloadDistance="1000">
+	<player speed="2" preloadDistance="1000" startX="150" startY="8000">
 	</player>
 
 	<soundPoint x="300" y="1100" r="300" fileName="Marker3.mp3">

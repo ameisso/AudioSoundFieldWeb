@@ -78,7 +78,7 @@ function loadAssets() {
         soundZones.push(soundZone);
     }
 
-    player = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 20, 20, 'none');
+    player = new Sprite(playerXML.getNum('startX'), playerXML.getNum('startY'), 20, 20, 'none');
     player.addAnimation('assets/player.png');
     player.rotation = 0;
 
@@ -96,7 +96,6 @@ function loadAssets() {
     loadingSprite.textSize = CANVAS_W / 30;
 }
 function setup() {
-
     canvas = createCanvas(CANVAS_W, CANVAS_H);
     var x = (windowWidth - width) / 2;
     var y = (windowHeight - height) / 2;
