@@ -23,7 +23,7 @@ function preload() {
     var soundPoint = new SoundPoint(300, 200, 100, "assets/Marker3.mp3");
     soundPoints.push(soundPoint);
 
-    var soundZone = new SoundZone(500, 800, "assets/Marker3.mp3");
+    var soundZone = new SoundZone(500, 1500, "assets/Marker3.mp3");
     soundZones.push(soundZone);
 
     outsideFrame = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 'static');

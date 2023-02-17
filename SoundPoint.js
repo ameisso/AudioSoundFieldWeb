@@ -25,7 +25,7 @@ SoundPoint.prototype.update = function () {
         this.audio.play();
     }
     else {
-        this.volume = Math.min(Math.max(0, 0.2 * Math.log(this.r / this.distanceFromPlayer())),1.0);
+        this.volume = Math.min(Math.max(0, 0.2 * Math.log(this.r / this.distanceFromPlayer())),0.9);
         this.audio.setVolume(this.volume);
     }
 

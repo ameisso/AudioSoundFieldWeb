@@ -24,22 +24,23 @@ SoundZone.prototype.update = function () {
 
     if (!this.audio.isPlaying() && player.position.y > this.h1 && player.position.y < this.h2) {
         this.audio.play();
-        console.log('play zone')
+        //console.log('play zone')
     }
     if (this.audio.isPlaying() && player.position.y > this.h2 || this.audio.isPlaying() && player.position.y < this.h1) {
         this.audio.pause();
-        console.log('stop zone')
+        //console.log('stop zone')
     }
     if (player.position.y > this.h1 && player.position.y < this.h1 + this.fadeZone) {
         let dist = abs(this.fadeZone - (player.position.y - this.h1 + this.fadeZone));
-        this.volume = 1 - Math.max(0, 0.2 * Math.log(this.fadeZone / dist));
+        this.volume = Math.min(Math.max(0, 1 - 0.2 * Math.log(this.fadeZone / dist)), 0.9);
         this.audio.setVolume(this.volume);
-       // console.log("zone volume "+this.volume);
+        // console.log("zone volume UP" + this.volume);
     }
     if (player.position.y > this.h2 - this.fadeZone && player.position.y < this.h2) {
         let dist = abs(this.h2 - player.position.y);
-        this.volume = 1 - Math.max(0, 0.2 * Math.log(this.fadeZone / dist));
+
+        this.volume = Math.min(Math.max(0, 1 - 0.2 * Math.log(this.fadeZone / dist)), 0.9);
         this.audio.setVolume(this.volume);
-      //  console.log("zone volume "+this.volume);
+        //  console.log("zone volume DOWN" + this.volume);
     }
 }
