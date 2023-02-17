@@ -36,7 +36,7 @@ SoundZone.prototype.update = function () {
         }
     }
 
-    if (this.audio) {
+    if (this.audio && this.audio.isLoaded()) {
         if (!this.audio.isPlaying() && player.position.y > this.h1 && player.position.y < this.h2) {
             this.audio.play();
         }

@@ -42,7 +42,7 @@ SoundPoint.prototype.update = function () {
     }
 
     // PLAY if NEEDED
-    if (this.audio) {
+    if (this.audio && this.audio.isLoaded()) {
         if (!this.audio.isPlaying() && this.distanceFromPlayer() < this.r) {
             this.audio.play();
         }

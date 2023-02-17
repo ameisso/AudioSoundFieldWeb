@@ -23,7 +23,7 @@ Soundline.prototype.update = function () {
       this.audio.setLoop(false);
     }
   }
-  if (this.audio) {
+  if (this.audio && this.audio.isLoaded()) {
     if (!this.audio.isPlaying() && player.position.y > this.height && !this.hasPlayed) {
       this.audio.play();
       this.hasPlayed = true;
