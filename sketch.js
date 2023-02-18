@@ -65,8 +65,6 @@ function loadAssets() {
         else {
             soundPoint = new SoundPoint(posX, posY, radius, filePath);
         }
-
-
         soundPoints.push(soundPoint);
     }
 
@@ -124,7 +122,7 @@ function draw() {
         camera.on();
 
         if (isTouchableDevice) {
-            player.moveTowards(mouse, Math.min(1, NAV_SPEED / 20));
+            player.moveTowards(mouse);
         }
         else {
             player.moveTo(mouse, NAV_SPEED);
