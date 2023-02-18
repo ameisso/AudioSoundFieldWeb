@@ -9,6 +9,7 @@ var soundZones = [];
 var loadingSprite;
 var debugSprite;
 var hadFirstClick = false;
+var isTouchableDevice = false;
 //the scene is twice the size of the canvas
 var SCENE_W = 3000;
 var SCENE_H = 10000;
@@ -121,7 +122,12 @@ function draw() {
         camera.on();
 
         var distance = createVector(player.position.x, player.position.y).sub(createVector(mouseX, mouseY))
-        player.moveTo(mouse, NAV_SPEED * distance.mag() / CANVAS_H);
+        if (isTouchableDevice) {
+            player.moveTowards(mouse, Math.min(1,NAV_SPEED/20));
+        }
+        else {
+            player.moveTo(mouse, NAV_SPEED );
+        }
 
         camera.x = player.x;
         camera.y = player.y;
@@ -171,12 +177,14 @@ function draw() {
 function touchStarted() {
     getAudioContext().resume()
     hadFirstClick = true;
+    isTouchableDevice = true;
 }
 
 function mousePressed() {
     hadFirstClick = true;
     camera.zoom = 0.1;
     NAV_SPEED *= 10;
+    isTouchableDevice = false;
 }
 
 function mouseReleased() {

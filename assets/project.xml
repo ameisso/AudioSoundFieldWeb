@@ -1,7 +1,7 @@
 <project>
 	<scene width="300" height="10000" fullscreen="1" debug="1" version="V0.2">
 	</scene>
-	<player speed="2" preloadDistance="1000" startX="150" startY="150">
+	<player speed="1" preloadDistance="1000" startX="150" startY="150">
 	</player>
 	<soundPoint x="100" y="1300" r="300" fileName="Marker1.mp3" associatedImage="illusion.png">
 	</soundPoint>
