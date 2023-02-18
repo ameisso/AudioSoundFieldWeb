@@ -100,7 +100,7 @@ function loadAssets() {
     loadingSprite.visible = true;
     loadingSprite.textSize = CANVAS_W / 30;
     let version = sceneXML.getString('version')
-    debugSprite =  new Sprite(CANVAS_W -30, CANVAS_H -15, 60, 30, 'none')
+    debugSprite = new Sprite(CANVAS_W - 30, CANVAS_H - 15, 60, 30, 'none')
     debugSprite.text = version
     debugSprite.color = 'grey';
     debugSprite.visible = true;
@@ -160,7 +160,7 @@ function draw() {
             let fps = frameRate();
             text("FPS: " + fps.toFixed(0), player.position.x - 50, player.position.y - 40);
         }
-        loadingSprite.visible = false;
+
         camera.off();
     }
 
@@ -187,5 +187,5 @@ function keyPressed() {
     if (key == 'd') {
         debug = !debug
     }
-  //  return false; // prevent any default behaviour
+    //  return false; // prevent any default behaviour
 }
