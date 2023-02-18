@@ -3,14 +3,12 @@
 	</scene>
 	<player speed="1" preloadDistance="1500" startX="300" startY="300d">
 	</player>
-		<soundZone startY="350" endY="2500" fileName="chant.wav">
+	<soundZone startY="350" endY="2500" fileName="chant.wav">
 	</soundZone>
 	<soundPoint x="400" y="3000" r="1000" fileName="vagues.wav">
 	</soundPoint>
 	<soundPoint x="2000" y="3000" r="1000" fileName="Clapotis.mp3">
 	</soundPoint>
-
-
 	<soundPoint x="3000" y="6000" r="1000" fileName="yoyo.mp3">
 	</soundPoint>
 	<soundPoint x="1500" y="6000" r="1000" fileName="mauvaisYoga.mp3">
