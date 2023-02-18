@@ -50,7 +50,6 @@ function loadAssets() {
     player.addAnimation('assets/player.png');
     player.rotation = 0;
 
-
     let soundLineXML = xml.getChildren('soundLine');
     for (let i = 0; i < soundLineXML.length; i++) {
         let posY = soundLineXML[i].getNum('y');

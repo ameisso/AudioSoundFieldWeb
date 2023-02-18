@@ -5,6 +5,7 @@ function SoundZone(h1, h2, path) {
     this.audio = loadSound(this.path);
     this.fadeZone = (this.h2 - this.h1) / 4
     this.volume = 0;
+    this.preloadIfNeeded();
 }
 
 SoundZone.prototype.display = function () {
@@ -24,18 +25,7 @@ SoundZone.prototype.display = function () {
 
 SoundZone.prototype.update = function () {
 
-    // LOAD IF NEEDED 
-    if (this.distanceFromPlayer() < preloadDistance) {
-        if (!this.audio) {
-            this.audio = loadSound(this.path);
-        }
-        if (!this.image) {
-            if (this.imagePath) {
-                this.image = loadImage(this.imagePath)
-            }
-        }
-    }
-
+    this.preloadIfNeeded();
     if (this.audio && this.audio.isLoaded()) {
         if (!this.audio.isPlaying() && player.position.y > this.h1 && player.position.y < this.h2) {
             this.audio.play();
@@ -59,4 +49,18 @@ SoundZone.prototype.update = function () {
 
 SoundZone.prototype.distanceFromPlayer = function () {
     return dist(player.position.x, player.position.y, SCENE_W / 2, this.h1);
+}
+
+
+SoundZone.prototype.preloadIfNeeded = function () {
+    if (this.distanceFromPlayer() < preloadDistance) {
+        if (!this.audio) {
+            this.audio = loadSound(this.path);
+        }
+        if (!this.image) {
+            if (this.imagePath) {
+                this.image = loadImage(this.imagePath)
+            }
+        }
+    }
 }
