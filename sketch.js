@@ -1,6 +1,5 @@
 var player;
 var bg;
-var outsideFrame;
 var xml;
 
 var soundLines = [];
@@ -8,6 +7,7 @@ var soundPoints = [];
 var soundZones = [];
 var loadingSprite;
 var debugSprite;
+var worldBorderSprite;
 var hadFirstClick = false;
 var isTouchableDevice = false;
 //the scene is twice the size of the canvas
@@ -43,10 +43,6 @@ function loadAssets() {
     if (sceneXML.getNum('debug') == 1) {
         debug = true;
     }
-
-    outsideFrame = new Sprite(CANVAS_W / 2, CANVAS_H / 2, 'static');
-    outsideFrame.addAnimation('assets/frame.png');
-    outsideFrame.visible = false;
 
     let soundLineXML = xml.getChildren('soundLine');
     for (let i = 0; i < soundLineXML.length; i++) {
@@ -106,7 +102,13 @@ function loadAssets() {
     debugSprite.color = 'grey';
     debugSprite.visible = true;
     debugSprite.textSize = CANVAS_W / 50;
-
+    worldBorderSprite = new Sprite(SCENE_W / 2, SCENE_H / 2, SCENE_W, SCENE_H, 'none');
+    let c = color('blue');
+    c.setAlpha(0);
+    worldBorderSprite.color = c
+    worldBorderSprite.strokeWeight = 10;
+    worldBorderSprite.stroke = 'blue'
+    worldBorderSprite.visible = false;
 }
 function setup() {
     canvas = createCanvas(CANVAS_W, CANVAS_H);
@@ -121,12 +123,11 @@ function draw() {
         background(20);
         camera.on();
 
-        var distance = createVector(player.position.x, player.position.y).sub(createVector(mouseX, mouseY))
         if (isTouchableDevice) {
-            player.moveTowards(mouse, Math.min(1,NAV_SPEED/20));
+            player.moveTowards(mouse, Math.min(1, NAV_SPEED / 20));
         }
         else {
-            player.moveTo(mouse, NAV_SPEED );
+            player.moveTo(mouse, NAV_SPEED);
         }
 
         camera.x = player.x;
@@ -165,12 +166,10 @@ function draw() {
             text(player.position.y.toFixed(0), player.position.x + 20, player.position.y);
             let fps = frameRate();
             text("FPS: " + fps.toFixed(0), player.position.x - 50, player.position.y - 40);
+            worldBorderSprite.draw();
         }
 
         camera.off();
-    }
-    if (debug) {
-        outsideFrame.draw();
     }
 }
 
