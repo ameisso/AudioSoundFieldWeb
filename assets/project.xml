@@ -1,7 +1,7 @@
 <project>
 	<scene width="3000" height="6000" fullscreen="1" debug="0" version="V0.4.1">
 	</scene>
-	<player speed="1" preloadDistance="1500" startX="300" startY="300d">
+	<player speed="1" preloadDistance="1500" startX="300" startY="300">
 	</player>
 	<soundZone startY="350" endY="2500" fileName="chant.wav">
 	</soundZone>
