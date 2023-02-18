@@ -3,7 +3,7 @@ function SoundZone(h1, h2, path) {
     this.h2 = h2;
     this.path = path;
     this.audio = loadSound(this.path);
-    this.fadeZone = (this.h2 - this.h1) / 4
+    this.fadeZone = Math.abs(this.h2 - this.h1) / 4
     this.volume = 0;
     this.preloadIfNeeded();
 }
@@ -34,13 +34,13 @@ SoundZone.prototype.update = function () {
             this.audio.pause();
         }
         if (player.position.y > this.h1 && player.position.y < this.h1 + this.fadeZone) {
-            let dist = abs(this.fadeZone - (player.position.y - this.h1 + this.fadeZone));
-            this.volume = Math.min(Math.max(0, 1 - 0.2 * Math.log(this.fadeZone / dist)), 0.9);
+            let dist = Math.abs(player.position.y - (this.h1 + this.fadeZone)) / this.fadeZone
+            this.volume = Math.min(Math.max(0, 1 - dist), 0.9);
             this.audio.setVolume(this.volume);
         }
         if (player.position.y > this.h2 - this.fadeZone && player.position.y < this.h2) {
-            let dist = abs(this.h2 - player.position.y);
-            this.volume = Math.min(Math.max(0, 1 - 0.2 * Math.log(this.fadeZone / dist)), 0.9);
+            let dist = Math.abs(player.position.y - (this.h2 - this.fadeZone)) / this.fadeZone
+            this.volume = Math.min(Math.max(0, 1 - dist), 0.9);
             this.audio.setVolume(this.volume);
         }
     }
