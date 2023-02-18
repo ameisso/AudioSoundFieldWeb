@@ -19,6 +19,7 @@ var NAV_SPEED = 3
 var preloadDistance = SCENE_H;
 let fullScreen = true;
 let debug = false;
+var assetsLoaded = false;
 let canvas;
 
 
@@ -28,11 +29,7 @@ function preload() {
 }
 
 function loadAssets() {
-
     let sceneXML = xml.getChild('scene');
-    let playerXML = xml.getChild('player')
-    NAV_SPEED = playerXML.getNum('speed')
-    preloadDistance = playerXML.getNum('preloadDistance')
     if (sceneXML.getNum('fullscreen')) {
         CANVAS_W = windowWidth;
         CANVAS_H = windowHeight;
@@ -43,6 +40,16 @@ function loadAssets() {
     if (sceneXML.getNum('debug') == 1) {
         debug = true;
     }
+
+    let playerXML = xml.getChild('player')
+    NAV_SPEED = playerXML.getNum('speed')
+    preloadDistance = playerXML.getNum('preloadDistance')
+    var playerX = playerXML.getNum('startX');
+    var playerY = playerXML.getNum('startY')
+    player = new Sprite(playerX, playerY, 20, 20, 'none');
+    player.addAnimation('assets/player.png');
+    player.rotation = 0;
+
 
     let soundLineXML = xml.getChildren('soundLine');
     for (let i = 0; i < soundLineXML.length; i++) {
@@ -76,11 +83,7 @@ function loadAssets() {
         var soundZone = new SoundZone(startY, endY, filePath);
         soundZones.push(soundZone);
     }
-    var playerX = playerXML.getNum('startX');
-    var playerY = playerXML.getNum('startY')
-    player = new Sprite(playerX, playerY, 20, 20, 'none');
-    player.addAnimation('assets/player.png');
-    player.rotation = 0;
+
 
     bg = new Group();
     for (var i = 0; i < 80; i++) {
@@ -107,6 +110,8 @@ function loadAssets() {
     worldBorderSprite.strokeWeight = 10;
     worldBorderSprite.stroke = 'blue'
     worldBorderSprite.visible = false;
+
+    assetsLoaded = true;
 }
 function setup() {
     canvas = createCanvas(CANVAS_W, CANVAS_H);
@@ -116,7 +121,7 @@ function setup() {
 }
 
 function draw() {
-    if (hadFirstClick) {
+    if (hadFirstClick && assetsLoaded) {
         loadingSprite.visible = false;
         background(20);
         camera.on();

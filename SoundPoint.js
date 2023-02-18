@@ -5,13 +5,14 @@ function SoundPoint(x, y, r, path, imagePath) {
     this.path = path;
     this.imagePath = imagePath;
     this.volume = 0;
-    this.debugSprite = new Sprite(this.x, this.y, 2*this.r, 'none');
+    this.debugSprite = new Sprite(this.x, this.y, 2 * this.r, 'none');
     let c = color('azure');
     c.setAlpha(100);
     this.debugSprite.color = c
-    this.debugSprite.strokeWeight = 5/camera.zoom;
+    this.debugSprite.strokeWeight = 5 / camera.zoom;
     this.debugSprite.stroke = 'azure'
     this.debugSprite.text = this.path;
+    this.preloadIfNeeded();
 }
 
 
@@ -34,18 +35,7 @@ SoundPoint.prototype.display = function () {
 
 SoundPoint.prototype.update = function () {
 
-    // LOAD IF NEEDED 
-    if (this.distanceFromPlayer() < preloadDistance) {
-        if (!this.audio) {
-            this.audio = loadSound(this.path);
-        }
-        if (!this.image) {
-            if (this.imagePath) {
-                this.image = loadImage(this.imagePath)
-            }
-        }
-    }
-
+    this.preloadIfNeeded();
     // PLAY if NEEDED
     if (this.audio && this.audio.isLoaded()) {
         if (!this.audio.isPlaying() && this.distanceFromPlayer() < this.r) {
@@ -65,4 +55,19 @@ SoundPoint.prototype.update = function () {
 
 SoundPoint.prototype.distanceFromPlayer = function () {
     return dist(player.position.x, player.position.y, this.x, this.y);
+}
+
+SoundPoint.prototype.preloadIfNeeded = function () {
+
+    if (this.distanceFromPlayer() < preloadDistance) {
+        if (!this.audio) {
+            console.log("preload "+this.path)
+            this.audio = loadSound(this.path);
+        }
+        if (!this.image) {
+            if (this.imagePath) {
+                this.image = loadImage(this.imagePath)
+            }
+        }
+    }
 }
