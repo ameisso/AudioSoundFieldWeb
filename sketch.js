@@ -163,8 +163,9 @@ function draw() {
 
         camera.off();
     }
-
-    outsideFrame.draw();
+    if (debug) {
+        outsideFrame.draw();
+    }
 }
 
 function touchStarted() {
