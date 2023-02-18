@@ -7,6 +7,7 @@ function Soundline(height, path) {
 
 Soundline.prototype.display = function () {
   if (debug) {
+    strokeWeight(1/camera.zoom)
     stroke(255);
     line(-width, this.height, SCENE_W + width, this.height);
     noStroke();

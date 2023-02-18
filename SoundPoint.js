@@ -5,24 +5,29 @@ function SoundPoint(x, y, r, path, imagePath) {
     this.path = path;
     this.imagePath = imagePath;
     this.volume = 0;
+    this.debugSprite = new Sprite(this.x, this.y, this.r, 'none');
+    let c = color('azure');
+    c.setAlpha(100);
+    this.debugSprite.color = c
+    this.debugSprite.strokeWeight = 5/camera.zoom;
+    this.debugSprite.stroke = 'azure'
+    this.debugSprite.text = this.path;
 }
 
 
 SoundPoint.prototype.display = function () {
     if (debug) {
-        stroke(255);
-        circle(this.x, this.y, 5);
-        noFill();
-        circle(this.x, this.y, this.r * 2);
-        noStroke();
-        fill(200);
-        text(this.path, this.x + 10, this.y - 10);
-        text(this.volume.toFixed(1), this.x + 10, this.y - 20);
+        this.debugSprite.visible = true;
+        this.debugSprite.draw();
     }
     else if (this.imagePath) {
         if (this.image) {
             image(this.image, this.x - this.image.width / 2, this.y - this.image.height / 2);
         }
+        this.debugSprite.visible = false;
+    }
+    else {
+        this.debugSprite.visible = false;
     }
 }
 
