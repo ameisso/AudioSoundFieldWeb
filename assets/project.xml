@@ -1,16 +1,20 @@
 <project>
-	<scene width="600" height="10000" fullscreen="1" debug="0" version="V0.3">
+	<scene width="6000" height="6000" fullscreen="1" debug="0" version="V0.3">
 	</scene>
-	<player speed="1" preloadDistance="1000" startX="150" startY="150">
+	<player speed="1" preloadDistance="1500" startX="3000" startY="3000">
 	</player>
-	<soundPoint x="100" y="100" r="300" fileName="Marker1.mp3" associatedImage="illusion.png">
+	<soundPoint x="0" y="3000" r="3000" fileName="vagues.wav">
 	</soundPoint>
-	<soundPoint x="300" y="1800" r="800" fileName="Marker3.mp3">
+	<soundPoint x="6000" y="3000" r="1000" fileName="Clapotis.mp3">
 	</soundPoint>
-	<soundZone startY="5100" endY="5500" fileName="Marker3.mp3">
-	</soundZone>
-	<soundZone startY="8000" endY="9000" fileName="Marker3.mp3">
-	</soundZone>
-	<soundLine y="5000" fileName="Marker3.mp3">
+	<soundPoint x="4400" y="1000" r="1000" fileName="chant.wav">
+	</soundPoint>
+	<soundPoint x="4500" y="6000" r="1000" fileName="yoyo.mp3">
+	</soundPoint>
+	<soundPoint x="1500" y="6000" r="1000" fileName="mauvaisYoga.mp3">
+	</soundPoint>
+	<soundLine y="5000" fileName="sieste.mp3">
+	</soundLine>
+	<soundLine y="3500" fileName="coureur.mp3">
 	</soundLine>
 </project>

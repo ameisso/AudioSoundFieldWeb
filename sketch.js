@@ -166,9 +166,10 @@ function draw() {
             noStroke();
             fill(200);
             textSize(CANVAS_W / 30);
-            text(player.position.y.toFixed(0), player.position.x + 20, player.position.y);
+            var positionText = player.position.x.toFixed(0) + " " + player.position.y.toFixed(0)
+            text(positionText, player.position.x + 20, player.position.y);
             let fps = frameRate();
-            text("FPS: " + fps.toFixed(0), player.position.x - 50, player.position.y - 40);
+          //  text("FPS: " + fps.toFixed(0), player.position.x - 50, player.position.y - 40);
             worldBorderSprite.draw();
         }
 
