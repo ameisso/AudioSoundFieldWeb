@@ -1,5 +1,8 @@
+
+<!-- rename that file into "project.xml" -->
+
 <project>
-	<scene width="300" height="10000" fullscreen="1" debug="1" version="V0.2">
+	<scene width="300" height="10000" fullscreen="1" debug="1" version="V0.1">
 	</scene>
 	<player speed="2" preloadDistance="1000" startX="150" startY="150">
 	</player>

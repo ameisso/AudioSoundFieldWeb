@@ -7,6 +7,7 @@ var soundLines = [];
 var soundPoints = [];
 var soundZones = [];
 var loadingSprite;
+var debugSprite;
 var hadFirstClick = false;
 //the scene is twice the size of the canvas
 var SCENE_W = 3000;
@@ -94,10 +95,17 @@ function loadAssets() {
     }
 
     loadingSprite = new Sprite(CANVAS_W / 2, CANVAS_H / 2, CANVAS_W * 1.2, CANVAS_H, 'none')
-    loadingSprite.text = 'click to start V0.1'
+    loadingSprite.text = 'click to start'
     loadingSprite.color = 'grey';
     loadingSprite.visible = true;
     loadingSprite.textSize = CANVAS_W / 30;
+    let version = sceneXML.getString('version')
+    debugSprite =  new Sprite(CANVAS_W -30, CANVAS_H -15, 60, 30, 'none')
+    debugSprite.text = version
+    debugSprite.color = 'grey';
+    debugSprite.visible = true;
+    debugSprite.textSize = CANVAS_W / 50;
+
 }
 function setup() {
     canvas = createCanvas(CANVAS_W, CANVAS_H);
@@ -179,5 +187,5 @@ function keyPressed() {
     if (key == 'd') {
         debug = !debug
     }
-    return false; // prevent any default behaviour
+  //  return false; // prevent any default behaviour
 }
