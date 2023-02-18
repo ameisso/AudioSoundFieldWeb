@@ -1,5 +1,5 @@
 <project>
-	<scene width="300" height="10000" fullscreen="1" debug="0" version="V0.2">
+	<scene width="300" height="10000" fullscreen="1" debug="0" version="V0.3">
 	</scene>
 	<player speed="1" preloadDistance="1000" startX="150" startY="150">
 	</player>

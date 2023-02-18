@@ -5,7 +5,7 @@ function SoundPoint(x, y, r, path, imagePath) {
     this.path = path;
     this.imagePath = imagePath;
     this.volume = 0;
-    this.debugSprite = new Sprite(this.x, this.y, this.r, 'none');
+    this.debugSprite = new Sprite(this.x, this.y, 2*this.r, 'none');
     let c = color('azure');
     c.setAlpha(100);
     this.debugSprite.color = c
