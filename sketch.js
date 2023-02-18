@@ -122,7 +122,8 @@ function draw() {
         camera.on();
 
         if (isTouchableDevice) {
-            player.moveTowards(mouse);
+            player.moveTo(mouse);
+
         }
         else {
             player.moveTo(mouse, NAV_SPEED);
