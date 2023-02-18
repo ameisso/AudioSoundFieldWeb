@@ -1,15 +1,15 @@
 <project>
-	<scene width="6000" height="6000" fullscreen="1" debug="0" version="V0.3">
+	<scene width="3000" height="6000" fullscreen="1" debug="0" version="V0.3">
 	</scene>
-	<player speed="1" preloadDistance="1500" startX="3000" startY="3000">
+	<player speed="1" preloadDistance="1500" startX="300" startY="300">
 	</player>
-	<soundPoint x="0" y="3000" r="3000" fileName="vagues.wav">
+	<soundPoint x="0" y="3000" r="1500" fileName="vagues.wav">
 	</soundPoint>
-	<soundPoint x="6000" y="3000" r="1000" fileName="Clapotis.mp3">
+	<soundPoint x="2000" y="3000" r="1000" fileName="Clapotis.mp3">
 	</soundPoint>
-	<soundPoint x="4400" y="1000" r="1000" fileName="chant.wav">
+	<soundPoint x="1500" y="1000" r="1000" fileName="chant.wav">
 	</soundPoint>
-	<soundPoint x="4500" y="6000" r="1000" fileName="yoyo.mp3">
+	<soundPoint x="3000" y="6000" r="1000" fileName="yoyo.mp3">
 	</soundPoint>
 	<soundPoint x="1500" y="6000" r="1000" fileName="mauvaisYoga.mp3">
 	</soundPoint>

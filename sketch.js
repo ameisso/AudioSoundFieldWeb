@@ -122,6 +122,7 @@ function setup() {
 function draw() {
     if (hadFirstClick && assetsLoaded) {
         loadingSprite.visible = false;
+        debugSprite.visible = false;
         background(20);
         camera.on();
 
