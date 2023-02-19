@@ -1,5 +1,5 @@
 <project>
-	<scene width="3000" height="6000" fullscreen="1" debug="0" version="V0.4.2">
+	<scene width="3000" height="6000" fullscreen="1" debug="0" version="V0.4.3">
 	</scene>
 	<player speed="1" preloadDistance="1500" startX="300" startY="300">
 	</player>
@@ -7,7 +7,7 @@
 	</soundZone> -->
 	<soundPoint x="400" y="3000" r="1000" fileName="vagues.wav">
 	</soundPoint>
-	<!-- <soundPoint x="2000" y="3000" r="1000" fileName="Clapotis.mp3">
+	<soundPoint x="2000" y="3000" r="1000" fileName="Clapotis.mp3">
 	</soundPoint>
 	<soundPoint x="3000" y="6000" r="1000" fileName="yoyo.mp3">
 	</soundPoint>
@@ -16,5 +16,5 @@
 	<soundLine y="5000" fileName="sieste.mp3">
 	</soundLine>
 	<soundLine y="4000" fileName="coureur.mp3">
-	</soundLine> -->
+	</soundLine>
 </project>
