@@ -170,7 +170,7 @@ function draw() {
             var positionText = player.position.x.toFixed(0) + " " + player.position.y.toFixed(0)
             text(positionText, player.position.x + 20, player.position.y);
             let fps = frameRate();
-          //  text("FPS: " + fps.toFixed(0), player.position.x - 50, player.position.y - 40);
+            //  text("FPS: " + fps.toFixed(0), player.position.x - 50, player.position.y - 40);
             worldBorderSprite.draw();
         }
 
@@ -186,14 +186,18 @@ function touchStarted() {
 
 function mousePressed() {
     hadFirstClick = true;
-    camera.zoom = 0.1;
-    NAV_SPEED *= 10;
     isTouchableDevice = false;
+    if (debug) {
+        camera.zoom = 0.1;
+        NAV_SPEED *= 10;
+    }
 }
 
 function mouseReleased() {
-    camera.zoom = 1;
-    NAV_SPEED /= 10;
+    if (debug) {
+        camera.zoom = 1;
+        NAV_SPEED /= 10;
+    }
 }
 
 function keyPressed() {
