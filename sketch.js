@@ -97,7 +97,7 @@ function loadAssets() {
     loadingSprite.visible = true;
     loadingSprite.textSize = CANVAS_W / 30;
     let version = sceneXML.getString('version')
-    debugSprite = new Sprite(CANVAS_W - 30, CANVAS_H - 15, 60, 30, 'none')
+    debugSprite = new Sprite(CANVAS_W - 70, CANVAS_H - 15, 60, 30, 'none')
     debugSprite.text = version
     debugSprite.color = 'grey';
     debugSprite.visible = true;
@@ -123,7 +123,7 @@ function draw() {
     if (hadFirstClick && assetsLoaded) {
         loadingSprite.visible = false;
         debugSprite.visible = false;
-        background(20);
+        background(25);
         camera.on();
 
         if (isTouchableDevice) {

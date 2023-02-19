@@ -58,7 +58,6 @@ SoundPoint.prototype.distanceFromPlayer = function () {
 }
 
 SoundPoint.prototype.preloadIfNeeded = function () {
-
     if (this.distanceFromPlayer() < preloadDistance) {
         if (!this.audio) {
             console.log("preload "+this.path)
