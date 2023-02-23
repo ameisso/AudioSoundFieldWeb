@@ -1,5 +1,5 @@
 <project>
-	<scene width="3000" height="6000" fullscreen="1" debug="0" version="V0.4.5">
+	<scene width="3000" height="9000" fullscreen="1" debug="0" version="V0.4.5">
 	</scene>
 	<player speed="1" preloadDistance="1500" startX="300" startY="300">
 	</player>
@@ -13,8 +13,10 @@
 	</soundPoint>
 	<soundPoint x="1500" y="6000" r="1000" fileName="mauvaisYoga.mp3">
 	</soundPoint>
+	<soundLine y="4000" fileName="coureur.mp3">
+	</soundLine>
 	<soundLine y="5000" fileName="sieste.mp3">
 	</soundLine>
-	<soundLine y="4000" fileName="coureur.mp3">
+	<soundLine y="7000" fileName="vent sous la porte.mp3">
 	</soundLine>
 </project>
