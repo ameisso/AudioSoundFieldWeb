@@ -5,7 +5,7 @@
 	</player>
 	<soundZone startY="350" endY="2500" fileName="chant.mp3">
 	</soundZone>
-	<soundPoint x="400" y="3000" r="1000" fileName="vagues.mp3">
+	<soundPoint x="400" y="3000" r="1000" fileName="vagues.mp3" associatedImage="montagne.png">
 	</soundPoint>
 	<soundPoint x="2000" y="3000" r="1000" fileName="Clapotis.mp3">
 	</soundPoint>
